@@ -13,3 +13,10 @@ PLAYER_SPEED = 200
 
 SHOT_RADIUS = 5
 PLAYER_SHOOT_SPEED = 500
+
+button_width, button_height = 150, 50
+button_y = SCREEN_HEIGHT - 100  # Place near the bottom
+button_color = (0, 128, 255)  # Blue
+button_hover_color = (0, 200, 255)
+button_text_color = (255, 255, 255)
+button_x = (SCREEN_WIDTH - button_width) // 2  # Center horizontally

@@ -5,6 +5,7 @@ from circleshape import *
 from player import *
 from asteroids import *
 from asteroidfield import *
+from shots import * 
 
 
 def main():
@@ -15,14 +16,19 @@ def main():
     drawable = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
+    
+    
 
     Player.containers = (drawable, updatable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     Asteroid.containers = (drawable, updatable, asteroids)
+    
     AsteroidField.containers = (updatable)
-
     asteroidfield = AsteroidField()
+
+    Shot.containers = (drawable, updatable,shots)
 
     dt = 0 # delta time - to track how much time has passed
     while True :

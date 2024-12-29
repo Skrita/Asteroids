@@ -3,6 +3,8 @@ import pygame
 from constants import *
 from circleshape import *
 from player import *
+from asteroids import *
+from asteroidfield import *
 
 
 def main():
@@ -12,8 +14,16 @@ def main():
     
     drawable = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+
     Player.containers = (drawable, updatable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+    Asteroid.containers = (drawable, updatable, asteroids)
+    AsteroidField.containers = (updatable)
+
+    asteroidfield = AsteroidField()
+
     dt = 0 # delta time - to track how much time has passed
     while True :
         for event in pygame.event.get():
@@ -26,6 +36,13 @@ def main():
         dt = clock.tick(60) /1000
         for object in updatable :
             object.update(dt)
+        # collision
+        for asteroid in asteroids :
+            if asteroid.collision(player) : 
+                print ("Game over!")
+                return
+
+           
         
 
 if __name__ == "__main__":

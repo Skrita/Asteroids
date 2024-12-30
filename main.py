@@ -60,7 +60,7 @@ def main():
 
                 for drawing in drawable :
                     drawing.draw(screen)
-                pygame.display.flip()
+                
                 dt = clock.tick(60) /1000
 
                 for object in updatable :
@@ -78,7 +78,9 @@ def main():
                         if asteroid.collision(shot) :
                             shot.kill()
                             asteroid.split()
+                            asteroid.draw_explosion(screen)
                             score+=asteroid.radius//20
+                pygame.display.flip()            
             if score>max_score : max_score = score
             lives -=1
             for object in updatable :

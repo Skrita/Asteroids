@@ -10,6 +10,10 @@ class Asteroid(CircleShape):
     def draw(self, screen):
         pygame.draw.circle(screen, (150,150,150) ,self.position,self.radius)
 
+    def draw_explosion(self,screen):
+        pygame.draw.circle(screen, (200,100,0) ,self.position,self.radius*1.3)
+        pygame.draw.circle(screen, (150,50,0) ,self.position,self.radius*0.6)
+
     def update(self, dt):
         # forward = pygame.Vector2(0, 1).rotate(self.rotation)
         # self.position += forward * self.velocity *dt
@@ -19,6 +23,8 @@ class Asteroid(CircleShape):
         self.kill()
         if self.radius <= ASTEROID_MIN_RADIUS : return
         random_angle = random.uniform(20,50)
+        
+        
         
         babyast1=Asteroid(self.position.dot(pygame.Vector2(1,0)), self.position.dot(pygame.Vector2(0,1)), self.radius - ASTEROID_MIN_RADIUS)
         babyast1.velocity=self.velocity.rotate(random_angle)*1.2
